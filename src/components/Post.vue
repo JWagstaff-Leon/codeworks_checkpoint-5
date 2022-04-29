@@ -40,8 +40,9 @@
         </div>
 
         <!-- Like button -->
-        <div class="like-button" v-if="user.isAuthenticated">
-            <i class="mdi mdi-heart-outline"></i>
+        <div class="like-button selectable" v-if="user.isAuthenticated" @click="likePost">
+            <i v-if="!post.likeIds.includes(account.id)" class="mdi mdi-heart-outline"></i>
+            <i v-else class="mdi mdi-heart"></i>
             <span>{{ post.likes.length }}</span>
         </div>
     </div>
@@ -50,6 +51,9 @@
 <script>
 import { computed } from '@vue/reactivity'
 import { AppState } from '../AppState.js'
+import { logger } from '../utils/Logger.js'
+import Pop from '../utils/Pop.js'
+import { postsService } from '../services/PostsService.js'
 export default
 {
     props:
@@ -61,11 +65,23 @@ export default
         }
     },
 
-    setup()
+    setup(props)
     {
         return {
             account: computed(() => AppState.account),
-            user: computed(() => AppState.user)
+            user: computed(() => AppState.user),
+            async likePost()
+            {
+                try
+                {
+                    await postsService.like(props.post.id);
+                }
+                catch(error)
+                {
+                    logger.error("[Post.vue > likePost]", error.message);
+                    Pop.toast(error.message, "error");
+                }
+            }
         }
     }
 }

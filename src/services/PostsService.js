@@ -13,9 +13,16 @@ class PostsService
         AppState.totalPages = res.data.totalPages;
     }
 
-    async createPost(newPost)
+    async create(newPost)
     {
         await api.post("api/posts", newPost);
+    }
+
+    async like(id)
+    {
+        const res = await api.post("api/posts/" + id + "/like", {});
+        const index = AppState.activePosts.findIndex(post => post.id === id);
+        AppState.activePosts.splice(index, 1, res.data);
     }
 }
 

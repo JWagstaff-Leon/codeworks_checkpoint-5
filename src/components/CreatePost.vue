@@ -48,7 +48,7 @@ export default
                 try
                 {
                     newPost.value.creatorId = account.id;
-                    await postsService.createPost(newPost.value);
+                    await postsService.create(newPost.value);
                     newPost.value = {};
                     Pop.toast("Post successfully created", "success");
                     postsService.getByPage();

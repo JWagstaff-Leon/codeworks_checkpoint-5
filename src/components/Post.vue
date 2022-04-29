@@ -1,11 +1,11 @@
 <template>
-    <div class="position-relative p-2 my-3 border border-dark rounded shadow">
+    <div class="position-relative py-2 mx-5 my-3 border border-dark rounded shadow">
         <!-- post header -->
         <div class="row mt-1">
             <!-- Profile picture -->
             <div class="col-12">
                 <div class="d-flex ps-2">
-                    <img :src="post.creator.picture" class="rounded-circle" />
+                    <img :src="post.creator.picture" class="rounded-circle profile-pic" />
 
                     <!-- Name + time + graduation status-->
                     <div class="ms-4 d-flex flex-column">
@@ -25,8 +25,13 @@
         </div>
 
         <!-- Post body -->
-        <div class="row mt-3 ps-2 pe-4">
-            <p>{{post.body}}</p>
+        <div class="row mt-3 mb-4">
+            <div class="col-12">
+                <p class="ps-2 pe-4">{{post.body}}</p>
+                <div class="d-flex justify-content-center" v-if="post.imgUrl">
+                    <img :src="post.imgUrl" class="img-fluid" />
+                </div>
+            </div>
         </div>
 
         <!-- Delete ellipsis -->
@@ -67,7 +72,7 @@ export default
 </script>
 
 <style lang="scss" scoped>
-img
+.profile-pic
 {
     height: 60px;
     width: 60px;
@@ -84,7 +89,7 @@ img
 .like-button
 {
     position: absolute;
-    bottom: 10px;
+    bottom: 5px;
     right: 10px;
 }
 </style>

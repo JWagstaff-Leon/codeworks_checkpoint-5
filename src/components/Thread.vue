@@ -1,6 +1,5 @@
 <template>
-    <div class="px-4">
-        <!-- TODO post components go here -->
+    <div>
         <Post v-for="p in posts" :key="p.id" :post="p" />
     </div>
 </template>

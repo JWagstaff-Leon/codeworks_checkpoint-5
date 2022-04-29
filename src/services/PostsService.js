@@ -12,6 +12,11 @@ class PostsService
         AppState.currentPage = page;
         AppState.totalPages = res.data.totalPages;
     }
+
+    async createPost(newPost)
+    {
+        await api.post("api/posts", newPost);
+    }
 }
 
 export const postsService = new PostsService();

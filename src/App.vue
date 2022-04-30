@@ -1,13 +1,13 @@
 <template>
     <main class="container-fluid">
         <div class="row">
-            <div class="col-2">
+            <div class="col-2 main-col">
                 <UserSidebar />
             </div>
-            <div class="col-10">
+            <div class="col-10 main-col">
                 <Navbar />
                 <div class="row">
-                    <div class="col-10">
+                    <div class="col-10 scroller sub-col">
                         <router-view />
                     </div>
                     <div class="col-2">
@@ -34,4 +34,20 @@ export default {
 <style lang="scss">
 @import "./assets/scss/main.scss";
 
+.main-col
+{
+    max-height: 100vh;
+}
+
+.sub-col
+{
+    max-height: calc(100vh - 56px);
+}
+
+.scroller
+{
+    overflow-y: scroll;
+    scrollbar-color: rgb(150, 150, 150) transparent;
+    scrollbar-width: thin;
+}
 </style>

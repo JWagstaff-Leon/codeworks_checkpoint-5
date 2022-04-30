@@ -1,11 +1,11 @@
 <template>
-    <div class="d-flex flex-column align-items-center" v-if="ads.length > 0">
         <!-- <div :v-for="(a, i) in ads" :key="i">
             <img :src="a.tall" class="img-fluid" />
         </div> -->
-        <img :src="ads[0].tall" class="ad action" />
-        <img :src="ads[1].tall" class="ad action" />
-    </div>
+        <div class="d-flex flex-column align-items-center sub-col" v-if="ads.length > 0">
+            <img :src="ads[0].tall" class="ad action" />
+            <img :src="ads[1].tall" class="ad action" />
+        </div>
 </template>
 
 <script>

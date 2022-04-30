@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="col-10">
-            <!-- TODO make a profile details component -->
+            <ProfileDetails :profile="profile" />
             <CreatePost v-if="user.isAuthenticated && account.id === profile.id" />
             <Thread />
         </div>

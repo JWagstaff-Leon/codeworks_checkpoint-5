@@ -1,5 +1,5 @@
 <template>
-    <div class="position-relative py-2 mx-5 my-3 border border-dark rounded shadow">
+    <div class="position-relative pt-2 mx-5 my-3 border border-dark rounded shadow">
         <!-- post header -->
         <div class="row mt-1">
             <div class="col-12">
@@ -25,7 +25,7 @@
         </div>
 
         <!-- Post body -->
-        <div class="row mt-3 mb-4">
+        <div class="row mt-3">
             <div class="col-12">
                 <p class="ps-2 pe-4">{{post.body}}</p>
                 <div class="d-flex justify-content-center" v-if="post.imgUrl">
@@ -40,10 +40,12 @@
         </div>
 
         <!-- Like button -->
-        <div class="like-button selectable" v-if="user.isAuthenticated" @click="likePost">
-            <i v-if="!post.likeIds.includes(account.id)" class="mdi mdi-heart-outline"></i>
-            <i v-else class="mdi mdi-heart"></i>
-            <span>{{ post.likes.length }}</span>
+        <div class="py-3" v-if="user.isAuthenticated">
+            <div class="like-button selectable" @click="likePost">
+                <i v-if="!post.likeIds.includes(account.id)" class="mdi mdi-heart-outline"></i>
+                <i v-else class="mdi mdi-heart"></i>
+                <span>{{ post.likes.length }}</span>
+            </div>
         </div>
     </div>
 </template>

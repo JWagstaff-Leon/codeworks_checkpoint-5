@@ -27,7 +27,7 @@ export default
                 profilesService.clearProfile();
                 adsService.clearAds();
                 await adsService.getAds();
-                await profilesService.getProfileById(route.params.id)
+                await profilesService.getById(route.params.id)
                 await postsService.getByQuery({ creatorId: route.params.id });
             }
             catch(error)

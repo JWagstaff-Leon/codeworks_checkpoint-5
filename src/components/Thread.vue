@@ -1,6 +1,7 @@
 <template>
     <div>
         <Post v-for="p in posts" :key="p.id" :post="p" />
+        <!-- TODO add pagination -->
     </div>
 </template>
 

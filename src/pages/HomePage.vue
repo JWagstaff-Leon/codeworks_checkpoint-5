@@ -1,13 +1,6 @@
 <template>
-    <div class="row">
-        <div class="col-10">
-            <CreatePost v-if="user.isAuthenticated" />
-            <Thread />
-        </div>
-        <div class="col-2">
-            <!-- TODO ad component goes here -->
-        </div>
-    </div>
+    <CreatePost v-if="user.isAuthenticated" />
+    <Thread />
 </template>
 
 <script>

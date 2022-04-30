@@ -1,14 +1,7 @@
 <template>
-    <div class="row">
-        <div class="col-10">
-            <ProfileDetails :profile="profile" />
-            <CreatePost v-if="user.isAuthenticated && account.id === profile.id" :query="{creatorId: route.params.id}" />
-            <Thread />
-        </div>
-        <div class="col-2">
-            <!-- TODO ad component will go here -->
-        </div>
-    </div>
+    <ProfileDetails :profile="profile" />
+    <CreatePost v-if="user.isAuthenticated && account.id === profile.id" :query="{creatorId: route.params.id}" />
+    <Thread />
 </template>
 
 <script>
@@ -25,14 +18,14 @@ export default
     setup()
     {
         const route = useRoute();
-        onMounted(() => {
+        onMounted(async () => {
             try
             {
                 const route = useRoute();
                 postsService.clearPosts();
                 profilesService.clearProfile();
-                profilesService.getProfileById(route.params.id)
-                postsService.getByQuery({ creatorId: route.params.id });
+                await profilesService.getProfileById(route.params.id)
+                await postsService.getByQuery({ creatorId: route.params.id });
             }
             catch(error)
             {

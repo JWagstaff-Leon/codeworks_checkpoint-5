@@ -6,7 +6,14 @@
             </div>
             <div class="col-10">
                 <Navbar />
-                <router-view />
+                <div class="row">
+                    <div class="col-10">
+                        <router-view />
+                    </div>
+                    <div class="col-2">
+                        <Ads />
+                    </div>
+                </div>
             </div>
         </div>
   </main>

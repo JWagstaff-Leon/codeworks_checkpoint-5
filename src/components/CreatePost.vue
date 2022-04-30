@@ -36,8 +36,16 @@ import { logger } from '../utils/Logger.js';
 import { postsService } from '../services/PostsService.js';
 export default
 {
-    // TODO add a prop for what to query post-create
-    setup()
+    props:
+    {
+        query:
+        {
+            type: Object,
+            default: {}
+        }
+    },
+
+    setup(props)
     {
         const newPost = ref({});
         const account = computed(() => AppState.account);
@@ -52,7 +60,7 @@ export default
                     await postsService.create(newPost.value);
                     newPost.value = {};
                     Pop.toast("Post successfully created", "success");
-                    postsService.getByQuery();
+                    postsService.getByQuery(props.query);
                 }
                 catch(error)
                 {

@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-10">
             <ProfileDetails :profile="profile" />
-            <CreatePost v-if="user.isAuthenticated && account.id === profile.id" />
+            <CreatePost v-if="user.isAuthenticated && account.id === profile.id" :query="{creatorId: route.params.id}" />
             <Thread />
         </div>
         <div class="col-2">
@@ -24,6 +24,7 @@ export default
 {
     setup()
     {
+        const route = useRoute();
         onMounted(() => {
             try
             {
@@ -41,6 +42,7 @@ export default
         });
 
         return {
+            route,
             user: computed(() => AppState.user),
             account: computed(() => AppState.account),
             profile: computed(() => AppState.activeProfile)

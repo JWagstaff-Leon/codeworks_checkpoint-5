@@ -13,6 +13,7 @@
 
 <script>
 import { computed } from '@vue/reactivity'
+import { onMounted } from "@vue/runtime-core";
 import { AppState } from '../AppState.js'
 import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop.js';
@@ -21,21 +22,23 @@ import { profilesService } from "../services/ProfilesService.js";
 import { useRoute } from 'vue-router';
 export default
 {
-    async setup()
+    setup()
     {
-        try
-        {
-            const route = useRoute();
-            postsService.clearPosts();
-            profilesService.clearProfile();
-            profilesService.getProfileById(route.params.id)
-            postsService.getByQuery({ creatorId: route.params.id });
-        }
-        catch(error)
-        {
-            logger.error("[ProfilePage.vue > created]", error.message);
-            Pop.toast(error.message, "error");
-        }
+        onMounted(() => {
+            try
+            {
+                const route = useRoute();
+                postsService.clearPosts();
+                profilesService.clearProfile();
+                profilesService.getProfileById(route.params.id)
+                postsService.getByQuery({ creatorId: route.params.id });
+            }
+            catch(error)
+            {
+                logger.error("[ProfilePage.vue > created]", error.message);
+                Pop.toast(error.message, "error");
+            }
+        });
 
         return {
             user: computed(() => AppState.user),

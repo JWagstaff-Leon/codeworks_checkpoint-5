@@ -36,6 +36,7 @@ import { logger } from '../utils/Logger.js';
 import { postsService } from '../services/PostsService.js';
 export default
 {
+    // TODO add a prop for what to query post-create
     setup()
     {
         const newPost = ref({});
@@ -51,7 +52,7 @@ export default
                     await postsService.create(newPost.value);
                     newPost.value = {};
                     Pop.toast("Post successfully created", "success");
-                    postsService.getByPage();
+                    postsService.getByQuery();
                 }
                 catch(error)
                 {

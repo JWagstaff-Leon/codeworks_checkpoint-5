@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-10">
             <!-- TODO make a profile details component -->
-            <CreatePost v-if="account.id === profile.id" />
+            <CreatePost v-if="user.isAuthenticated && account.id === profile.id" />
             <Thread />
         </div>
         <div class="col-2">
@@ -28,17 +28,19 @@ export default
             const route = useRoute();
             postsService.clearPosts();
             profilesService.clearProfile();
-            await profilesService.getProfileById(route.params.id)
-            await postsService.getByQuery({ creatorId: route.params.id });
+            profilesService.getProfileById(route.params.id)
+            postsService.getByQuery({ creatorId: route.params.id });
         }
         catch(error)
         {
             logger.error("[ProfilePage.vue > created]", error.message);
             Pop.toast(error.message, "error");
         }
+
         return {
+            user: computed(() => AppState.user),
             account: computed(() => AppState.account),
-            profile: computed(() => AppState.profile)
+            profile: computed(() => AppState.activeProfile)
         }
     }
 }

@@ -9,12 +9,25 @@ class ProfilesService
         AppState.activeProfile = {};
     }
 
-    async getProfileById(id)
+    clearProfiles()
+    {
+        AppState.activeProfiles = [];
+    }
+
+    async getById(id)
     {
         this.clearProfile();
         const res = await api.get("api/profiles/" + id);
         logger.log(`getProfileById response | id = ${id}]`, res.data);
         AppState.activeProfile = res.data;
+    }
+
+    async getByQuery(params = {})
+    {
+        this.clearProfiles();
+        const res = await api.get("api/profiles", { params });
+        logger.log("Profiles by query res", res.data);
+        AppState.activeProfiles = res.data;
     }
 }
 

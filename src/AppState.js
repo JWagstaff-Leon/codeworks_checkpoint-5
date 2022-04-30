@@ -4,8 +4,11 @@ import { reactive } from 'vue'
 export const AppState = reactive({
     user: {},
     account: {},
-    profile: null,
+    activeProfile: {},
+
     activePosts: [],
     currentPage: null,
-    totalPages: null
+    totalPages: null,
+    previousPage: null,
+    nextPage: null
 })

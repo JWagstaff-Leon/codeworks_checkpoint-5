@@ -26,7 +26,8 @@ export default {
         {
             try
             {
-                await postsService.getByPage();
+                postsService.clearPosts();
+                await postsService.getByQuery();
             }
                 catch(error)
             {

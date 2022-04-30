@@ -18,8 +18,8 @@
                     <div class="row">
                         <!-- add photo and post buttons -->
                         <div class="col-12 d-flex justify-content-between mt-3">
-                            <button class="btn btn-outline-primary"><i class="mdi mdi-image-multiple me-1"></i>Photo</button>
-                            <button class="btn btn-primary"><i class="mdi mdi-send me-1"></i>Post</button>
+                            <button class="btn btn-outline-primary" type="button"><i class="mdi mdi-image-multiple me-1"></i>Photo</button>
+                            <button class="btn btn-primary" type="submit"><i class="mdi mdi-send me-1"></i>Post</button>
                         </div>
                     </div>
                 </form>

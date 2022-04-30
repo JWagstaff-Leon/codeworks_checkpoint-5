@@ -4,13 +4,21 @@ import { api } from "./AxiosService.js";
 
 class PostsService
 {
-    async getByPage(page = 1)
+    clearPosts()
     {
-        const res = await api.get("api/posts", { params: page });
-        logger.log(`[Posts service getByPage(page=${page})]`, res.data)
+        AppState.activePosts = [];
+    }
+
+    async getByQuery(params)
+    {
+        this.clearPosts();
+        const res = await api.get("api/posts", {params});
+        logger.log("getByQuery res", res)
         AppState.activePosts = res.data.posts;
-        AppState.currentPage = page;
+        AppState.currentPage = +(res.data.page.split(" ")[0].substring(1));
         AppState.totalPages = res.data.totalPages;
+        AppState.nextPage = res.data.older;
+        AppState.previousPage = res.data.newer;
     }
 
     async create(newPost)

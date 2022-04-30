@@ -13,6 +13,7 @@ import Pop from '../utils/Pop.js';
 import { postsService } from '../services/PostsService.js';
 import { profilesService } from "../services/ProfilesService.js";
 import { useRoute } from 'vue-router';
+import { adsService } from '../services/AdsService.js';
 export default
 {
     setup()
@@ -24,6 +25,8 @@ export default
                 const route = useRoute();
                 postsService.clearPosts();
                 profilesService.clearProfile();
+                adsService.clearAds();
+                await adsService.getAds();
                 await profilesService.getProfileById(route.params.id)
                 await postsService.getByQuery({ creatorId: route.params.id });
             }

@@ -2,7 +2,7 @@
     <div class="position-relative pb-2 mx-5 my-3 border border-dark rounded shadow">
         <div class="position-relative row mb-1">
             <div class="col-12">
-                <img :src="profile.coverImg" class="header-img"/>
+                <img :src="profile.coverImg" class="header-img" />
                 <img :src="profile.picture" class="profile-pic rounded-circle" />
                 <div v-if="profile.graduated" class="grad-badge d-flex align-items-center justify-content-center"><i class="text-dark mdi mdi-school mdi-24px"></i></div>
             </div>
@@ -33,7 +33,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <h4 class="fst-italic px-3 mx-5">{{profile.bio}}</h4>
+                <h4 class="fst-italic px-3 mx-5 mb-4">{{profile.bio}}</h4>
             </div>
         </div>
 
@@ -82,6 +82,8 @@ $dark: #111927;
     width: 12vw;
     object-fit: cover;
 
+    border: 0.2vw solid black;
+
     position: absolute;
     bottom: -6vw;
     left: calc(1vw + 25px);
@@ -96,7 +98,7 @@ $dark: #111927;
     bottom: -5.5vw;
     left: 11vw;
 
-    border: 0.2vw solid black;
+    border: 0.18vw solid black;
     border-radius: 50%;
     background-color: white;
 }

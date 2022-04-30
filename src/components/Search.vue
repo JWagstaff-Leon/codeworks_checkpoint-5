@@ -11,9 +11,8 @@
 import { ref } from '@vue/reactivity'
 import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop.js';
-import { postsService } from '../services/PostsService.js';
 import { useRouter } from 'vue-router';
-import { profilesService } from '../services/ProfilesService.js';
+import { searchService } from "../services/SearchService.js";
 export default
 {
     setup()
@@ -26,11 +25,9 @@ export default
             {
                 try
                 {
-                    postsService.clearPosts()
-                    profilesService.clearProfiles();
+                    logger.log("noppers", searchTerm.value)
+                    searchService.setSearchTerm(searchTerm.value);
                     router.push({name: "Search"});
-                    await postsService.getByQuery({ query: searchTerm.value });
-                    await profilesService.getByQuery({ query: searchTerm.value });
                 }
                 catch(error)
                 {

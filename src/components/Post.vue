@@ -40,7 +40,7 @@
         </div>
 
         <!-- Like button -->
-        <div class="py-3" v-if="user.isAuthenticated">
+        <div class="py-3">
             <div class="like-button selectable" @click="likePost">
                 <i v-if="!post.likeIds.includes(account.id)" class="mdi mdi-heart-outline"></i>
                 <i v-else class="mdi mdi-heart"></i>
@@ -71,13 +71,18 @@ export default
     setup(props)
     {
         const router = useRouter();
+        const user = computed(() => AppState.user);
         return {
             account: computed(() => AppState.account),
-            user: computed(() => AppState.user),
+            user,
             async likePost()
             {
                 try
                 {
+                    if(!user.value.isAuthenticated)
+                    {
+                        throw new Error("You must be logged in to like posts");
+                    }
                     await postsService.like(props.post.id);
                 }
                 catch(error)

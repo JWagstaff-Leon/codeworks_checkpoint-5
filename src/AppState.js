@@ -14,5 +14,7 @@ export const AppState = reactive({
     previousPage: null,
     nextPage: null,
 
-    ads: []
+    ads: [],
+
+    searchTerm: ""
 })

@@ -2,6 +2,19 @@ import { AppState } from "../AppState.js";
 import { logger } from "../utils/Logger.js";
 import { api } from "./AxiosService.js";
 
+function _convertDateString(rawDate)
+{
+    let newDate = new Date(rawDate)
+    let newString = "";
+    newString += newDate.getDate() + "/";
+    newString += (+newDate.getMonth() + 1) + "/";
+    newString += newDate.getFullYear();
+    newString += " ";
+    newString += newDate.toTimeString().substring(0, 5);
+
+    return newString;
+}
+
 class PostsService
 {
     clearPosts()
@@ -14,6 +27,7 @@ class PostsService
         this.clearPosts();
         const res = await api.get("api/posts", {params});
         logger.log("getByQuery res", res)
+        res.data.posts.forEach(post => post.createdTime = _convertDateString(post.createdAt));
         AppState.activePosts = res.data.posts;
         AppState.currentPage = +(res.data.page.split(" ")[0].substring(1));
         AppState.totalPages = res.data.totalPages;

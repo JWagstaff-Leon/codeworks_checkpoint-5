@@ -2,12 +2,12 @@
     <div class="py-2 mx-5 my-3 border border-dark rounded shadow">
         <div class="row">
             <!-- Profile picture -->
-            <div class="col-2">
+            <div class="col-1">
                 <div class="ps-2">
                     <img :src="account.picture" class="rounded-circle profile-pic" />
                 </div>
             </div>
-            <div class="col-10">
+            <div class="col-11">
                 <!-- textbox -->
                 <form @submit.prevent="createPost" class="pe-4">
                     <div class="row">

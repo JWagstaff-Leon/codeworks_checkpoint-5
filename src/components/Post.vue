@@ -2,9 +2,9 @@
     <div class="position-relative py-2 mx-5 my-3 border border-dark rounded shadow">
         <!-- post header -->
         <div class="row mt-1">
-            <!-- Profile picture -->
             <div class="col-12">
-                <div class="d-flex ps-2">
+                <div class="d-flex ps-2 action" @click="goToProfile(post.creatorId)">
+                    <!-- Profile picture -->
                     <img :src="post.creator.picture" class="rounded-circle profile-pic" />
 
                     <!-- Name + time + graduation status-->
@@ -17,8 +17,8 @@
                             </div>
                         </div>
 
-                        <span>{{post.createdAt.substring(11, 16)}} - {{ post.createdAt.substring(0, 10).split("-").join("/")}}</span>
-                        <i class="mdi mdi-account-school"></i>
+                        <span>{{post.createdTime}}</span>
+                        <i v-if="post.creator.graduated" class="mdi mdi-school"></i>
                     </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@
         </div>
 
         <!-- Delete ellipsis -->
-        <div class="post-menu-button" v-if="post.creatorId === account.id">
+        <div class="post-menu-button action" v-if="post.creatorId === account.id">
             <i class="mdi mdi-dots-horizontal"></i>
         </div>
 
@@ -54,6 +54,7 @@ import { AppState } from '../AppState.js'
 import { logger } from '../utils/Logger.js'
 import Pop from '../utils/Pop.js'
 import { postsService } from '../services/PostsService.js'
+import { useRouter } from 'vue-router'
 export default
 {
     props:
@@ -67,6 +68,7 @@ export default
 
     setup(props)
     {
+        const router = useRouter();
         return {
             account: computed(() => AppState.account),
             user: computed(() => AppState.user),
@@ -81,6 +83,10 @@ export default
                     logger.error("[Post.vue > likePost]", error.message);
                     Pop.toast(error.message, "error");
                 }
+            },
+            goToProfile(id)
+            {
+                router.push({ name: 'Profile', params: { id }});
             }
         }
     }

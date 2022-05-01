@@ -11,14 +11,12 @@
                     <div class="ms-4 d-flex flex-column">
 
                         <!-- Name -->
-                        <div class="row">
-                            <div class="col-12">
-                                {{ post.creator.name }}
-                            </div>
-                        </div>
+                        {{ post.creator.name }}
 
-                        <span>{{post.createdTime}}</span>
-                        <i v-if="post.creator.graduated" class="mdi mdi-school"></i>
+                        <div>
+                            <span>{{post.createdTime}}</span>
+                            <i v-if="post.creator.graduated" class="mdi mdi-school ms-2"></i>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,32 +1,22 @@
 <template>
-    <div class="py-2 mx-5 my-3 border border-dark rounded shadow">
-        <!-- TODO touch up the overlapping on this -->
-        <div class="row">
-            <!-- Profile picture -->
-            <div class="col-1">
+    <form @submit.prevent="createPost">
+        <div class="py-2 mx-5 my-3 border border-dark rounded shadow">
+            <!-- TODO touch up the overlapping on this -->
+            <div class="d-flex justify-content-between">
+                <!-- Profile picture -->
                 <div class="ps-2">
                     <img :src="account.picture" class="rounded-circle profile-pic" />
                 </div>
-            </div>
-            <div class="col-11">
                 <!-- textbox -->
-                <form @submit.prevent="createPost" class="pe-4">
-                    <div class="row">
-                        <div class="col-12">
-                            <textarea placeholder="Share what's happening" class="rounded py-1 px-2" v-model="newPost.body"></textarea>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <!-- add photo and post buttons -->
-                        <div class="col-12 d-flex justify-content-between mt-3">
-                            <button class="btn btn-outline-primary" type="button"><i class="mdi mdi-image-multiple me-1"></i>Photo</button>
-                            <button class="btn btn-primary" type="submit"><i class="mdi mdi-send me-1"></i>Post</button>
-                        </div>
-                    </div>
-                </form>
+                <textarea placeholder="Share what's happening" class="rounded py-1 px-2 mx-3" v-model="newPost.body"></textarea>
+                <!-- add photo and post buttons -->
+            </div>
+            <div class="d-flex justify-content-around mt-3">
+                <button class="btn btn-outline-primary" type="button"><i class="mdi mdi-image-multiple me-1"></i>Photo</button>
+                <button class="btn btn-primary" type="submit"><i class="mdi mdi-send me-1"></i>Post</button>
             </div>
         </div>
-    </div>
+    </form>
 </template>
 
 <script>

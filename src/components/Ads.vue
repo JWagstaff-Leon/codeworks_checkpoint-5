@@ -2,9 +2,13 @@
         <!-- <div :v-for="(a, i) in ads" :key="i">
             <img :src="a.tall" class="img-fluid" />
         </div> -->
-        <div class="d-flex flex-column align-items-end sub-col" v-if="ads.length > 0">
-            <img :src="ads[0].tall" class="ad action" />
-            <img :src="ads[1].tall" class="ad action" />
+        <div class="row d-flex align-items-end sub-col h-100" v-if="ads.length > 0">
+            <div class="col-12 h-50 d-flex justify-content-end ad-col">
+                <img :src="ads[0].tall" class="ad action" />
+            </div>
+            <div class="d-flex col-12 h-50 justify-content-end ad-col">
+                <img :src="ads[1].tall" class="ad action" />
+            </div>
         </div>
 </template>
 
@@ -40,9 +44,15 @@ export default
 </script>
 
 <style lang="scss" scoped>
+
+.ad-col
+{
+    padding-right: 0px;
+}
+
 .ad
 {
-    height: 50%;
+    height: 100%;
     width: auto;
     object-fit: cover;
     object-position: center;

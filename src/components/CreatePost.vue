@@ -5,7 +5,7 @@
             <div class="d-flex justify-content-between">
                 <!-- Profile picture -->
                 <div class="ps-2">
-                    <router-link :to="{name: 'Profile', params: { id: account.id }}">
+                    <router-link :to="{name: 'Profile', params: { id: account.id }}" title="Go to your profile">
                         <img :src="account.picture" class="rounded-circle profile-pic" />
                     </router-link>
                 </div>

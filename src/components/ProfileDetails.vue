@@ -12,13 +12,13 @@
                 <div class="d-flex justify-content-end">
                     <i class="mdi mdi-arrow-vertical-lock mdi-48px mx-2" style="opacity: 0;"></i>
                     <a v-if="profile.github" :href="profile.github" target="_blank">
-                        <i class="mdi mdi-github mdi-48px mx-2"></i>
+                        <i class="mdi mdi-github mdi-48px mx-2" :title="profile.name + '\'s Github'"></i>
                     </a>
                     <a v-if="profile.linkedin" :href="profile.linkedin" target="_blank">
-                        <i class="mdi mdi-linkedin mdi-48px mx-2"></i>
+                        <i class="mdi mdi-linkedin mdi-48px mx-2" :title="profile.name + '\'s Linkedin'"></i>
                     </a>
                     <a v-if="profile.resume" :href="profile.resume" target="_blank">
-                        <i class="mdi mdi-file-account-outline mdi-48px mx-2"></i>
+                        <i class="mdi mdi-file-account-outline mdi-48px mx-2" :title="profile.name + '\'s Resume'"></i>
                     </a>
                 </div>
             </div>

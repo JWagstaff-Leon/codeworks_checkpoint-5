@@ -1,16 +1,16 @@
 <template>
     <main class="container-fluid d-flex flex-column">
         <div class="row flex-grow-1">
-            <div class="col-3 main-col">
+            <div class="col-2 main-col">
                 <UserSidebar />
             </div>
-            <div class="col-9 main-col">
+            <div class="col-10 main-col">
                 <Navbar />
                 <div class="row">
-                    <div class="col-8 scroller sub-col">
+                    <div class="col-10 scroller sub-col">
                         <router-view />
                     </div>
-                    <div class="col-4">
+                    <div class="col-2">
                         <Ads />
                     </div>
                 </div>

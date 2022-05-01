@@ -2,12 +2,12 @@
         <!-- <div :v-for="(a, i) in ads" :key="i">
             <img :src="a.tall" class="img-fluid" />
         </div> -->
-        <div class="row d-flex align-items-end sub-col h-100" v-if="ads.length > 0">
-            <div class="col-12 h-50 d-flex justify-content-end ad-col">
-                <img :src="ads[0].tall" class="ad action" />
+        <div class="d-flex flex-column align-items-end sub-col h-100" v-if="ads.length > 0">
+            <div class="d-flex h-50 justify-content-end ad-col py-3">
+                <img :src="ads[0].tall" class="ad action shadow" />
             </div>
-            <div class="d-flex col-12 h-50 justify-content-end ad-col">
-                <img :src="ads[1].tall" class="ad action" />
+            <div class="d-flex h-50 justify-content-end ad-col py-3">
+                <img :src="ads[1].tall" class="ad action shadow" />
             </div>
         </div>
 </template>
@@ -53,7 +53,7 @@ export default
 .ad
 {
     height: 100%;
-    width: auto;
+    max-width: 100%;
     object-fit: cover;
     object-position: center;
 }

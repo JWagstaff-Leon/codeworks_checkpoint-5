@@ -1,9 +1,9 @@
 <template>
-    <div class="position-relative pt-2 mx-5 my-3 border border-dark rounded shadow">
+    <div class="position-relative pt-2 mx-5 my-5 border border-dark rounded shadow">
         <!-- post header -->
         <div class="row mt-1">
             <div class="col-12">
-                <div class="d-flex ps-2 action" @click="goToProfile(post.creatorId)">
+                <div class="d-flex ps-2 action" @click="goToProfile(post.creatorId)" :title="'Go to ' + post.creator.name + '\'s Profile'">
                     <!-- Profile picture -->
                     <img :src="post.creator.picture" class="rounded-circle profile-pic" />
 

@@ -1,6 +1,8 @@
 <template>
-    <CreatePost v-if="user.isAuthenticated" />
-    <Thread />
+    <div class="me-5 pe-5">
+        <CreatePost v-if="user.isAuthenticated" />
+        <Thread />
+    </div>
 </template>
 
 <script>
@@ -40,4 +42,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
 </style>

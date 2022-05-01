@@ -39,7 +39,7 @@ class PostsService
         AppState.newerPage = res.data.newer;
     }
 
-    async getByURL(url)
+    async getByURL(url = "api/posts")
     {
         this.clearPosts();
         const res = await api.get(url);

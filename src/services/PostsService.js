@@ -60,6 +60,7 @@ class PostsService
     {
         const res = await api.post("api/posts/" + id + "/like", {});
         const index = AppState.activePosts.findIndex(post => post.id === id);
+        res.data.createdTime = _convertDateString(res.data.createdAt);
         AppState.activePosts.splice(index, 1, res.data);
     }
 

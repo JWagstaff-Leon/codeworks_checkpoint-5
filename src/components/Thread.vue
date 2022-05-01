@@ -2,6 +2,7 @@
     <div>
         <Post v-for="p in posts" :key="p.id" :post="p" />
         <Pagination />
+        <BannerAd v-if="posts.length > 0"/>
     </div>
 </template>
 

@@ -26,24 +26,34 @@
         <div class="row mt-5 mb-3">
             <div class="col-12">
                 <div class="px-3 mx-5">
-                    <h4 class="my-1">{{profile.class}}</h4>
-                    <h3 class="my-1">{{profile.name}}</h3>
+                    <h4 class="my-1">{{ profile.class }}</h4>
+                    <h3 class="my-1">{{ profile.name }}</h3>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
-                <h4 class="fst-italic px-3 mx-5 mb-4">{{profile.bio}}</h4>
+                <h4 class="fst-italic px-3 mx-5 mb-4">{{ profile.bio }}</h4>
             </div>
         </div>
 
         <!-- TODO make a profile edit form + functionality -->
-        <button v-if="account.id === profile.id" class="btn btn-outline-dark edit-button">Edit</button>
+        <button v-if="account.id === profile.id" class="btn btn-outline-dark edit-button" data-bs-toggle="modal" data-bs-target="#edit-profile-modal">Edit</button>
     </div>
+
+    <Modal id="edit-profile-modal">
+        <template #modal-header>
+            <h2>Edit Profile</h2>
+        </template>
+
+        <template #modal-body>
+            <ProfileForm :profile="profile" />
+        </template>
+    </Modal>
 </template>
 
 <script>
-import { computed } from '@vue/reactivity'
+import { computed, ref } from '@vue/reactivity'
 import { AppState } from '../AppState.js'
 export default
 {
@@ -58,7 +68,9 @@ export default
 
     setup()
     {
+        const editing = ref(false);
         return {
+            editing,
             account: computed(() => AppState.account)
         }
     }

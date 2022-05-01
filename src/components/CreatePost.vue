@@ -1,5 +1,6 @@
 <template>
     <div class="py-2 mx-5 my-3 border border-dark rounded shadow">
+        <!-- TODO touch up the overlapping on this -->
         <div class="row">
             <!-- Profile picture -->
             <div class="col-1">

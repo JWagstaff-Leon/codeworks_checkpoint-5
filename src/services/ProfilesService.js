@@ -29,6 +29,13 @@ class ProfilesService
         logger.log("Profiles by query res", res.data);
         AppState.activeProfiles = res.data;
     }
+
+    async edit(data)
+    {
+        const res = await api.put("account", data);
+        logger.log("edit profile res", res.data);
+        AppState.activeProfile = res.data;
+    }
 }
 
 export const profilesService = new ProfilesService();

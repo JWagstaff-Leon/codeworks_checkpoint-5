@@ -34,6 +34,13 @@ class ProfilesService
     {
         const res = await api.put("account", data);
         logger.log("edit profile res", res.data);
+        AppState.activePosts = AppState.activePosts.map(post => {
+            if(post.creatorId === res.data.id)
+            {
+                post.creator = res.data;
+            }
+            return post;
+        });
         AppState.activeProfile = res.data;
     }
 }

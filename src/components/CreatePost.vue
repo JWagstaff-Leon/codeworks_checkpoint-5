@@ -5,7 +5,9 @@
             <div class="d-flex justify-content-between">
                 <!-- Profile picture -->
                 <div class="ps-2">
-                    <img :src="account.picture" class="rounded-circle profile-pic" />
+                    <router-link :to="{name: 'Profile', params: { id: account.id }}">
+                        <img :src="account.picture" class="rounded-circle profile-pic" />
+                    </router-link>
                 </div>
                 <!-- textbox -->
                 <textarea placeholder="Share what's happening" class="rounded py-1 px-2 mx-3" v-model="newPost.body"></textarea>

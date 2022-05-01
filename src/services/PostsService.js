@@ -20,19 +20,35 @@ class PostsService
     clearPosts()
     {
         AppState.activePosts = [];
+        AppState.totalPages = null;
+        // AppState.currentPage = null;
+        AppState.newerPage = null;
+        AppState.olderPage = null;
     }
 
     async getByQuery(params)
     {
         this.clearPosts();
         const res = await api.get("api/posts", {params});
-        logger.log("getByQuery res", res)
+        logger.log("getByQuery res", res);
         res.data.posts.forEach(post => post.createdTime = _convertDateString(post.createdAt));
         AppState.activePosts = res.data.posts;
-        AppState.currentPage = +(res.data.page.split(" ")[0].substring(1));
+        // AppState.currentPage = +(res.data.page.split(" ")[0].substring(1));
         AppState.totalPages = res.data.totalPages;
-        AppState.nextPage = res.data.older;
-        AppState.previousPage = res.data.newer;
+        AppState.olderPage = res.data.older;
+        AppState.newerPage = res.data.newer;
+    }
+
+    async getByURL(url)
+    {
+        this.clearPosts();
+        const res = await api.get(url);
+        res.data.posts.forEach(post => post.createdTime = _convertDateString(post.createdAt));
+        AppState.activePosts = res.data.posts;
+        // AppState.currentPage = +(res.data.page.split(" ")[0].substring(1));
+        AppState.totalPages = res.data.totalPages;
+        AppState.olderPage = res.data.older;
+        AppState.newerPage = res.data.newer;
     }
 
     async create(newPost)

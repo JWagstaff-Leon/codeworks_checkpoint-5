@@ -10,10 +10,10 @@ export const AppState = reactive({
     profileEdit: {},
 
     activePosts: [],
-    currentPage: null,
+    // currentPage: null,
     totalPages: null,
-    previousPage: null,
-    nextPage: null,
+    newerPage: null,
+    olderPage: null,
 
     ads: [],
 

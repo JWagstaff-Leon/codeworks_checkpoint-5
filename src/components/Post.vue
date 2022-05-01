@@ -42,7 +42,7 @@
 
         <!-- Like button -->
         <div class="py-3">
-            <div class="like-button selectable" @click="likePost">
+            <div class="like-button action" @click="likePost">
                 <i v-if="!post.likeIds.includes(account.id)" class="mdi mdi-heart-outline"></i>
                 <i v-else class="mdi mdi-heart"></i>
                 <span>{{ post.likes.length }}</span>

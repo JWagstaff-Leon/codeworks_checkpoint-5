@@ -40,7 +40,7 @@
         </div>
         <textarea class="form-control mt-4" placeholder="About You" v-model="edit.bio"></textarea>
         <div class="d-flex justify-content-around mt-5">
-            <button type="button" class="btn btn-outline-secondary">Cancel</button>
+            <button type="button" class="btn btn-outline-secondary" @click="hideModal">Cancel</button>
             <button type="submit" class="btn btn-primary">Submit changes</button>
         </div>
     </form>
@@ -67,6 +67,11 @@ export default
     setup(props)
     {
         const edit = ref({});
+        const hideModal = () => {
+            Modal.getOrCreateInstance(document.getElementById("edit-profile-modal")).hide();
+            edit.value = {...props.profile};
+        };
+
         watchEffect(() =>
         {
             edit.value = {...props.profile};
@@ -79,16 +84,17 @@ export default
                 try
                 {
                     await profilesService.edit(edit.value);
-                    Modal.getOrCreateInstance(document.getElementById("edit-profile-modal")).hide();
                     Pop.toast("Successfully edited profile", "success");
-                    edit.value = {...props.profile};
+                    hideModal();
                 }
                 catch(error)
                 {
                     logger.error("[ProfileForm.vue > submitForm]", error.message);
                     Pop.toast(error.message, "error");
                 }
-            }
+            },
+
+            hideModal
         }
     }
 }

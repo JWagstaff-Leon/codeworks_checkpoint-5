@@ -34,7 +34,10 @@
 
         <!-- Delete ellipsis -->
         <div class="post-menu-button action" v-if="post.creatorId === account.id">
-            <i class="mdi mdi-dots-horizontal"></i>
+            <i class="mdi mdi-dots-horizontal" data-bs-toggle="dropdown"></i>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><span class="dropdown-item text-danger" @click="deletePost(post.id)">Delete Post</span></li>
+            </ul>
         </div>
 
         <!-- Like button -->
@@ -92,6 +95,22 @@ export default
             goToProfile(id)
             {
                 router.push({ name: 'Profile', params: { id }});
+            },
+            async deletePost(id)
+            {
+                try
+                {
+                    if(await Pop.confirm())
+                    {
+                        postsService.deletePost(id);
+                        Pop.toast("Post successfully deleted", "success");
+                    }
+                }
+                catch(error)
+                {
+                    logger.error("[Post.vue > deletePost]", error.message);
+                    Pop.toast(error.message, "error");
+                }
             }
         }
     }

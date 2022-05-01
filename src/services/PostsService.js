@@ -62,6 +62,14 @@ class PostsService
         const index = AppState.activePosts.findIndex(post => post.id === id);
         AppState.activePosts.splice(index, 1, res.data);
     }
+
+    async deletePost(id)
+    {
+        const res = api.delete("api/posts/" + id);
+        logger.log("deletePost response", res.data);
+        const index = AppState.activePosts.findIndex(post => post.id === id);
+        AppState.activePosts.splice(index, 1);
+    }
 }
 
 export const postsService = new PostsService();

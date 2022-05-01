@@ -1,6 +1,6 @@
 <template>
-    <main class="container-fluid">
-        <div class="row">
+    <main class="container-fluid d-flex flex-column">
+        <div class="row flex-grow-1">
             <div class="col-3 main-col">
                 <UserSidebar />
             </div>

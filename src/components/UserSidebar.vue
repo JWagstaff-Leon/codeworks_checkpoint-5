@@ -2,6 +2,7 @@
     <div class="bg-light h-100 row flex-column shadow">
         <Login />
         <div v-if="user.isAuthenticated" class="flex-grow-1 d-flex flex-column align-items-center justify-content-center mb-3">
+            <!-- TODO make this work even if you're already on a profile route -->
             <router-link :to="{name: 'Profile', params: { id: profile.id }}" class="d-flex align-items-center justify-content-center position-relative">
                 <img :src="profile.picture" class="profile-pic rounded-circle" />
                 <div v-if="profile.graduated" class="grad-badge d-flex align-items-center justify-content-center"><i class="text-dark mdi mdi-school mdi-24px"></i></div>

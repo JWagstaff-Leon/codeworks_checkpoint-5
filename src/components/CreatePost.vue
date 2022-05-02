@@ -48,6 +48,7 @@ import Pop from '../utils/Pop.js';
 import { logger } from '../utils/Logger.js';
 import { postsService } from '../services/PostsService.js';
 import { Modal } from 'bootstrap';
+import { loadingService } from '../services/LoadingService.js';
 export default
 {
     props:
@@ -77,11 +78,14 @@ export default
             {
                 try
                 {
+                    loadingService.start();
                     newPost.value.creatorId = account.id;
+                    postsService.clearPosts();
                     await postsService.create(newPost.value);
                     newPost.value = {};
                     Pop.toast("Post successfully created", "success");
-                    postsService.getByQuery(props.query);
+                    await postsService.getByQuery(props.query);
+                    loadingService.done();
                 }
                 catch(error)
                 {

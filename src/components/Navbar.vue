@@ -5,6 +5,8 @@
         <div class="d-flex flex-column align-items-center">
             <h4 class="text-dark">The Network</h4>
         </div>
+        <!-- TODO fix this on mobile -->
+        <Login class="d-inline-block d-lg-none" />
         </router-link>
         <Search />
       </div>
@@ -12,9 +14,12 @@
 </template>
 
 <script>
+import { computed } from '@vue/reactivity';
+import { AppState } from '../AppState.js';
 export default {
   setup() {
     return {
+        profile: computed(() => AppState.account)
     };
   },
 };

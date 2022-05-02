@@ -1,6 +1,6 @@
 <template>
     <form @submit.prevent="createPost">
-        <div class="p-2 mx-5 my-4 border border-dark rounded shadow bg-light">
+        <div class="p-2 mx-lg-5 my-4 border border-dark rounded shadow bg-light">
             <div class="d-flex justify-content-between mt-3">
                 <!-- Profile picture -->
                 <div class="ps-2">

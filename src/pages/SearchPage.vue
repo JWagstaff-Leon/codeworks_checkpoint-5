@@ -1,12 +1,13 @@
 <template>
     <Loading v-if="loading"/>
     <div v-else class="px-3 fade-in">
-        <div class="mt-2" v-if="profiles.length > 0">
+        <div class="mt-2">
             <h2>Profile Results</h2>
+            <h1 class="mt-4 ms-2" v-if="profiles.length <= 0">No Profiles Found</h1>
             <ProfileCard v-for="p in profiles" :key="p.id" :profile="p" />
         </div>
-        <hr v-if="profiles.length > 0 && posts.length > 0" class="my-5"/>
-        <div class="mt-2" v-if="posts.length > 0">
+        <hr class="my-5"/>
+        <div class="mt-2">
             <h2>Post Results</h2>
             <Thread />
         </div>

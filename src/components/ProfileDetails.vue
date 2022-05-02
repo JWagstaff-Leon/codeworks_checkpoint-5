@@ -1,5 +1,5 @@
 <template>
-    <div class="position-relative pb-2 mx-5 my-3 border border-dark rounded shadow">
+    <div class="position-relative pb-2 mx-5 my-3 border border-dark rounded shadow bg-light">
         <div class="position-relative row mb-1">
             <div class="col-12">
                 <img :src="profile.coverImg" class="header-img" />

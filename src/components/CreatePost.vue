@@ -1,6 +1,6 @@
 <template>
     <form @submit.prevent="createPost">
-        <div class="py-2 mx-5 my-4 border border-dark rounded shadow">
+        <div class="py-2 mx-5 my-4 border border-dark rounded shadow bg-light">
             <!-- TODO touch up the overlapping on this -->
             <div class="d-flex justify-content-between">
                 <!-- Profile picture -->
@@ -115,7 +115,7 @@ textarea
     resize: none;
     width: 100%;
     background: white;
-    border: 2px dashed limegreen;
+    border: 2px dashed #BBEBEBD0;
 }
 .img-preview
 {

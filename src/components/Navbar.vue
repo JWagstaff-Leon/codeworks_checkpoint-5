@@ -1,5 +1,5 @@
 <template>
-  <nav class="row navbar navbar-expand-lg navbar-dark bg-dark px-3">
+  <nav class="row navbar navbar-expand-lg px-3">
     <div class="container-fluid">
         <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
         <div class="d-flex flex-column align-items-center">
@@ -21,6 +21,11 @@ export default {
 </script>
 
 <style scoped>
+.navbar
+{
+    background: linear-gradient(to right, #39C4C6, #BBEBEB);
+}
+
 a:hover {
   text-decoration: none;
 }

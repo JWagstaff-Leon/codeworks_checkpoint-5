@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
         <div class="d-flex flex-column align-items-center">
-            Go home
+            <h4 class="text-dark">The Network</h4>
         </div>
         </router-link>
         <Search />

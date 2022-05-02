@@ -41,7 +41,7 @@ export default {
 
 .sub-col
 {
-    height: calc(100vh - 56px);
+    height: calc(100vh - 62px);
 }
 
 .scroller

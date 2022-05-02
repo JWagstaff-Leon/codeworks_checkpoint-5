@@ -1,7 +1,7 @@
 <template>
   <span class="navbar-text">
     <button
-      class="btn selectable text-success lighten-30 text-uppercase my-2 my-lg-0"
+      class="btn selectable text-uppercase my-2 my-lg-0"
       @click="login"
       v-if="!user.isAuthenticated"
     >
@@ -15,14 +15,8 @@
         aria-expanded="false"
         id="authDropdown"
       >
-        <div v-if="account.picture">
-          <img
-            :src="account.picture"
-            alt="account photo"
-            height="40"
-            class="rounded"
-          />
-          <span class="mx-3 text-success lighten-30">{{ account.name }}</span>
+        <div class="p-2">
+          <span class="me-3">Account Options</span>
         </div>
       </div>
       <div
@@ -33,11 +27,6 @@
             <div class="list-group-item list-group-item-action hoverable">
                 My Profile
             </div>
-        </router-link>
-        <router-link :to="{ name: 'Account' }">
-          <div class="list-group-item list-group-item-action hoverable">
-            Manage Account
-          </div>
         </router-link>
         <div
           class="list-group-item list-group-item-action hoverable text-danger"

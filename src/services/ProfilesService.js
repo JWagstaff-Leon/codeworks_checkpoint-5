@@ -42,6 +42,7 @@ class ProfilesService
             return post;
         });
         AppState.activeProfile = res.data;
+        AppState.account = res.data;
     }
 }
 

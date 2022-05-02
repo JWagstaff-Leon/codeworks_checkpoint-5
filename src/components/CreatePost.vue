@@ -1,6 +1,6 @@
 <template>
     <form @submit.prevent="createPost">
-        <div class="py-2 mx-5 my-3 border border-dark rounded shadow">
+        <div class="py-2 mx-5 my-4 border border-dark rounded shadow">
             <!-- TODO touch up the overlapping on this -->
             <div class="d-flex justify-content-between">
                 <!-- Profile picture -->

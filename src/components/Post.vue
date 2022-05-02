@@ -1,5 +1,5 @@
 <template>
-    <div class="position-relative pt-2 mx-5 my-5 border border-dark rounded shadow">
+    <div class="position-relative pt-2 mx-5 my-5 border border-dark rounded shadow no-select">
         <!-- post header -->
         <div class="row mt-1">
             <div class="col-12">

@@ -2,10 +2,10 @@
     <div class="bg-light h-100 row flex-column shadow">
         <Login />
         <div v-if="user.isAuthenticated" class="flex-grow-1 d-flex flex-column align-items-center justify-content-center mb-3">
-            <div class="d-flex align-items-center justify-content-center position-relative">
+            <router-link :to="{name: 'Profile', params: { id: profile.id }}" class="d-flex align-items-center justify-content-center position-relative">
                 <img :src="profile.picture" class="profile-pic rounded-circle" />
                 <div v-if="profile.graduated" class="grad-badge d-flex align-items-center justify-content-center"><i class="text-dark mdi mdi-school mdi-24px"></i></div>
-            </div>
+            </router-link>
             <div class="d-flex flex-column my-3">
                 <h4 class="fst-italic">{{ profile.class }}</h4>
                 <h3>{{ profile.name }}</h3>
@@ -67,6 +67,6 @@ export default
 
     border: 0.18vw solid black;
     border-radius: 50%;
-    background-color: white;
+    background-color: goldenrod;
 }
 </style>

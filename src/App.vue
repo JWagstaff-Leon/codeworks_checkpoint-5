@@ -6,7 +6,7 @@
             </div>
             <div class="col-12 col-lg-10 main-col">
                 <Navbar />
-                <div class="row">
+                <div class="row non-scroller">
                     <div class="col-12 col-lg-10 scroller sub-col">
                         <router-view />
                     </div>
@@ -42,6 +42,11 @@ export default {
 .sub-col
 {
     height: calc(100vh - 62px);
+}
+
+.non-scroller
+{
+    overflow-y: hidden;
 }
 
 .scroller

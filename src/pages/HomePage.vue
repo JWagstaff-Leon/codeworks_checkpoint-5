@@ -1,5 +1,6 @@
 <template>
-    <div class="me-5 pe-5">
+    <Loading v-if="loading > 0" />
+    <div v-else class="me-5 pe-5 fade-in">
         <CreatePost v-if="user.isAuthenticated" />
         <Thread />
     </div>
@@ -13,6 +14,7 @@ import { logger } from '../utils/Logger.js'
 import { postsService } from "../services/PostsService.js";
 import Pop from '../utils/Pop.js'
 import { adsService } from '../services/AdsService.js'
+import { loadingService } from '../services/LoadingService.js'
 export default {
   name: 'Home',
 
@@ -22,10 +24,12 @@ export default {
         {
             try
             {
+                loadingService.start();
                 postsService.clearPosts();
                 adsService.clearAds();
                 await adsService.getAds();
                 await postsService.getByQuery();
+                loadingService.done();
             }
                 catch(error)
             {
@@ -36,6 +40,7 @@ export default {
 
       return {
           user: computed(() => AppState.user),
+          loading: computed(() => AppState.loading)
       }
   }
 }

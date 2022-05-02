@@ -1,8 +1,7 @@
 <template>
     <form @submit.prevent="createPost">
-        <div class="py-2 mx-5 my-4 border border-dark rounded shadow bg-light">
-            <!-- TODO touch up the overlapping on this -->
-            <div class="d-flex justify-content-between">
+        <div class="p-2 mx-5 my-4 border border-dark rounded shadow bg-light">
+            <div class="d-flex justify-content-between mt-3">
                 <!-- Profile picture -->
                 <div class="ps-2">
                     <router-link :to="{name: 'Profile', params: { id: account.id }}" title="Go to your profile">

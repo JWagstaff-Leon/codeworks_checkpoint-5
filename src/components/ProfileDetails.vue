@@ -37,7 +37,6 @@
             </div>
         </div>
 
-        <!-- TODO make a profile edit form + functionality -->
         <button v-if="account.id === profile.id" class="btn btn-outline-dark edit-button" data-bs-toggle="modal" data-bs-target="#edit-profile-modal">Edit</button>
     </div>
 

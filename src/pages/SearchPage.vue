@@ -1,5 +1,6 @@
 <template>
-    <div class="px-3">
+    <Loading v-if="loading"/>
+    <div v-else class="px-3 fade-in">
         <div class="mt-2" v-if="profiles.length > 0">
             <h2>Profile Results</h2>
             <ProfileCard v-for="p in profiles" :key="p.id" :profile="p" />
@@ -20,33 +21,37 @@ import { adsService } from '../services/AdsService.js';
 import { AppState } from '../AppState.js';
 import { profilesService } from '../services/ProfilesService.js';
 import { postsService } from '../services/PostsService.js';
+import { loadingService } from '../services/LoadingService.js';
 export default
 {
     watch:
     {
-        searchTerm(newTerm)
+        async searchTerm(newTerm)
         {
-            logger.log(newTerm)
+            loadingService.start();
             postsService.clearPosts();
             profilesService.clearProfiles();
-            postsService.getByQuery({ query: newTerm });
-            profilesService.getByQuery({ query: newTerm });
+            await postsService.getByQuery({ query: newTerm });
+            await profilesService.getByQuery({ query: newTerm });
+            loadingService.done();
         }
     },
 
     setup()
     {
         const searchTerm = computed(() => AppState.searchTerm);
-        onMounted(() =>
+        onMounted(async () =>
         {
             try
             {
+                loadingService.start();
                 postsService.clearPosts();
                 profilesService.clearProfiles();
                 adsService.clearAds();
                 adsService.getAds();
-                postsService.getByQuery({ query: searchTerm.value });
-                profilesService.getByQuery({ query: searchTerm.value });
+                await postsService.getByQuery({ query: searchTerm.value });
+                await profilesService.getByQuery({ query: searchTerm.value });
+                loadingService.done();
             }
             catch(error)
             {
@@ -58,6 +63,7 @@ export default
         return {
             profiles: computed(() => AppState.activeProfiles),
             posts: computed(() => AppState.activePosts),
+            loading: computed(() => AppState.loading),
             searchTerm
         }
     }

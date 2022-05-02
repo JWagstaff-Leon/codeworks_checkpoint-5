@@ -1,7 +1,10 @@
 <template>
-    <ProfileDetails :profile="profile" />
-    <CreatePost v-if="user.isAuthenticated && account.id === profile.id" :query="{creatorId: route.params.id}" />
-    <Thread />
+    <Loading v-if="loading" />
+    <div v-else class="fade-in">
+        <ProfileDetails :profile="profile" />
+        <CreatePost v-if="user.isAuthenticated && account.id === profile.id" :query="{creatorId: route.params.id}" />
+        <Thread />
+    </div>
 </template>
 
 <script>
@@ -14,6 +17,7 @@ import { postsService } from '../services/PostsService.js';
 import { profilesService } from "../services/ProfilesService.js";
 import { useRoute } from 'vue-router';
 import { adsService } from '../services/AdsService.js';
+import { loadingService } from '../services/LoadingService.js';
 export default
 {
     setup()
@@ -22,13 +26,14 @@ export default
         onMounted(async () => {
             try
             {
-                const route = useRoute();
+                loadingService.start();
                 postsService.clearPosts();
                 profilesService.clearProfile();
                 adsService.clearAds();
-                await adsService.getAds();
+                adsService.getAds();
                 await profilesService.getById(route.params.id)
                 await postsService.getByQuery({ creatorId: route.params.id });
+                loadingService.done();
             }
             catch(error)
             {
@@ -41,7 +46,8 @@ export default
             route,
             user: computed(() => AppState.user),
             account: computed(() => AppState.account),
-            profile: computed(() => AppState.activeProfile)
+            profile: computed(() => AppState.activeProfile),
+            loading: computed(() => AppState.loading)
         }
     }
 }

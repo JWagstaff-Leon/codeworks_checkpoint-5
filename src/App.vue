@@ -10,7 +10,7 @@
                     <div class="col-10 scroller sub-col">
                         <router-view />
                     </div>
-                    <div class="col-2">
+                    <div class="col-2 sub-col">
                         <Ads />
                     </div>
                 </div>
@@ -41,7 +41,7 @@ export default {
 
 .sub-col
 {
-    max-height: calc(100vh - 56px);
+    height: calc(100vh - 56px);
 }
 
 .scroller

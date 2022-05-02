@@ -3,7 +3,7 @@
         <!-- post header -->
         <div class="row mt-1">
             <div class="col-12">
-                <div class="d-flex ps-2 action" @click="goToProfile(post.creatorId)" :title="'Go to ' + post.creator.name + '\'s Profile'">
+                <div class="d-flex ps-3 action" @click="goToProfile(post.creatorId)" :title="'Go to ' + post.creator.name + '\'s Profile'">
                     <!-- Profile picture -->
                     <img :src="post.creator.picture" class="rounded-circle profile-pic" />
 
@@ -25,7 +25,7 @@
         <!-- Post body -->
         <div class="row mt-3">
             <div class="col-12">
-                <p class="ps-2 pe-4">{{post.body}}</p>
+                <p class="ps-3 pe-4">{{post.body}}</p>
                 <div class="d-flex justify-content-center" v-if="post.imgUrl">
                     <img :src="post.imgUrl" class="img-fluid" />
                 </div>

@@ -1,5 +1,5 @@
 <template>
-    <div class="p-2 mx-5 my-3 border border-dark rounded shadow d-flex selectable no-select" @click="goToProfile(profile._id)">
+    <div class="p-2 mx-5 my-3 border border-dark rounded shadow d-flex selectable no-select bg-light" @click="goToProfile(profile._id)">
         <div class="position-relative me-5">
             <img :src="profile.picture" class="profile-pic rounded-circle" />
             <div v-if="profile.graduated" class="grad-badge d-flex align-items-center justify-content-center"><i class="text-dark mdi mdi-school mdi-24px"></i></div>

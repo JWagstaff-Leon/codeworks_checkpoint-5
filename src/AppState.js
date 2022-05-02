@@ -16,5 +16,7 @@ export const AppState = reactive({
 
     ads: [],
 
-    searchTerm: ""
+    searchTerm: "",
+
+    loading: true
 })

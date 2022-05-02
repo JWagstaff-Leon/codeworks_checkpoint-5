@@ -1,5 +1,5 @@
 <template>
-    <div class="position-relative pb-2 mx-5 my-3 border border-dark rounded shadow bg-light">
+    <div class="position-relative pb-2 mx-lg-5 my-3 border border-dark rounded shadow bg-light">
         <div class="position-relative row mb-1">
             <div class="col-12">
                 <img :src="profile.coverImg" class="header-img" />
@@ -111,7 +111,7 @@ $dark: #111927;
 
     border: 0.18vw solid black;
     border-radius: 50%;
-    background-color: white;
+    background-color: goldenrod;
 }
 
 a
@@ -128,5 +128,24 @@ a
     position: absolute;
     bottom: 5px;
     right: 5px;
+}
+
+@media only screen and (max-width: 992px)
+{
+    .profile-pic
+    {  
+        height: 30vw;
+        width: 30vw;
+        bottom: -15vw;
+        border: 0.5vw solid black;
+    }
+    .grad-badge
+    {
+        height: 9vw;
+        width: 9vw;
+        bottom: -14vw;
+        left: 29vw;
+        border: 0.4vw solid black;
+    }
 }
 </style>

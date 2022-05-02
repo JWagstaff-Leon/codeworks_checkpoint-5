@@ -1,6 +1,6 @@
 <template>
     <Loading v-if="loading > 0" />
-    <div v-else class="me-5 pe-5 fade-in">
+    <div v-else class="me-lg-5 pe-lg-5 fade-in">
         <CreatePost v-if="user.isAuthenticated" />
         <Thread />
     </div>

@@ -9,7 +9,7 @@
 
 <script>
 import { computed } from '@vue/reactivity'
-import { onMounted } from "@vue/runtime-core";
+import { onMounted, watchEffect } from "@vue/runtime-core";
 import { AppState } from '../AppState.js'
 import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop.js';
@@ -20,6 +20,22 @@ import { adsService } from '../services/AdsService.js';
 import { loadingService } from '../services/LoadingService.js';
 export default
 {
+    watch:
+    {
+        async 'route.params.id'(newId)
+        {
+            logger.log("newId",newId)
+            loadingService.start();
+            postsService.clearPosts();
+            profilesService.clearProfile();
+            adsService.clearAds();
+            adsService.getAds();
+            await profilesService.getById(newId)
+            await postsService.getByQuery({ creatorId: newId });
+            loadingService.done();
+        }
+    },
+
     setup()
     {
         const route = useRoute();
